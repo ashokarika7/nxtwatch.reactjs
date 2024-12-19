@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
   padding: 10px;
-  background-color: ${props => (props.lightTheme ? '#0f0f0f' : '#f9f9f9')};
+  background-color: ${props => (props.lightTheme ? '#231f20' : '#f8fafc')};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@ export const NavContainer = styled.nav`
 export const NavImg = styled.img`
   width: 150px;
   height: 34px;
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 760px) {
     width: 100px;
     height: 30px;
   }

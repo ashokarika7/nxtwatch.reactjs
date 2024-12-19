@@ -1,9 +1,15 @@
 import Header from '../Header'
+import SideBar from '../SideBar'
+import HomeVideo from '../HomeVideo'
+import {HomeTotalContainer} from './styledComponents'
 
 const Home = () => (
   <>
     <Header />
-    <h1>Home</h1>
+    <HomeTotalContainer>
+      <SideBar />
+      <HomeVideo />
+    </HomeTotalContainer>
   </>
 )
 
