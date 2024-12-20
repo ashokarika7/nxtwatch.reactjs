@@ -6,7 +6,7 @@ import {HomeTotalContainer} from './styledComponents'
 const Home = () => (
   <>
     <Header />
-    <HomeTotalContainer>
+    <HomeTotalContainer data-testid="home">
       <SideBar />
       <HomeVideo />
     </HomeTotalContainer>
