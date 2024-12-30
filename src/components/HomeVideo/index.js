@@ -8,6 +8,7 @@ import Failure from '../Failure'
 import VideoDisplayItem from '../VideoDisplayItem'
 import {
   HomeVideoTotalContainer,
+  HomeVideSearchApiConstantsContainer,
   SearchBarContainer,
   SearchInpEl,
   SearchBtn,
@@ -66,7 +67,7 @@ class HomeVideo extends Component {
         thumbnailUrl: eachItem.thumbnail_url,
         title: eachItem.title,
         viewCount: eachItem.view_count,
-        channel: this.getChannelDetails(eachItem),
+        channel: this.getChannelDetails(eachItem.channel),
       }))
       this.setState({
         apiCallStatus: apiStatus.success,
@@ -75,7 +76,6 @@ class HomeVideo extends Component {
     } else {
       this.setState({apiCallStatus: apiStatus.failure})
     }
-    console.log(data.videos)
   }
 
   onChangeSearchInp = event => {
@@ -111,7 +111,9 @@ class HomeVideo extends Component {
     }
     return (
       <HomeVideoSuccessContainer>
-        <VideoDisplayItem />
+        {allVideosList.map(eachItem => (
+          <VideoDisplayItem key={eachItem.id} videoDetails={eachItem} />
+        ))}
       </HomeVideoSuccessContainer>
     )
   }
@@ -150,19 +152,24 @@ class HomeVideo extends Component {
               {homeBanner && (
                 <HomeBanner toggleHomeBanner={this.toggleHomeBanner} />
               )}
-              <SearchBarContainer>
-                <SearchInpEl
-                  lightTheme={lightTheme}
-                  value={searchInp}
-                  onChange={this.onChangeSearchInp}
-                  placeholder="Search"
-                  type="text"
-                />
-                <SearchBtn lightTheme={lightTheme} onClick={this.getAllVideos}>
-                  <IoIosSearch />
-                </SearchBtn>
-              </SearchBarContainer>
-              {this.renderApiStatus(lightTheme)}
+              <HomeVideSearchApiConstantsContainer>
+                <SearchBarContainer>
+                  <SearchInpEl
+                    lightTheme={lightTheme}
+                    value={searchInp}
+                    onChange={this.onChangeSearchInp}
+                    placeholder="Search"
+                    type="text"
+                  />
+                  <SearchBtn
+                    lightTheme={lightTheme}
+                    onClick={this.getAllVideos}
+                  >
+                    <IoIosSearch />
+                  </SearchBtn>
+                </SearchBarContainer>
+                {this.renderApiStatus(lightTheme)}
+              </HomeVideSearchApiConstantsContainer>
             </HomeVideoTotalContainer>
           )
         }}

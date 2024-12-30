@@ -9,6 +9,10 @@ export const HomeVideoTotalContainer = styled.div`
     width: 100%;
   }
 `
+export const HomeVideSearchApiConstantsContainer = styled.div`
+  padding: 15px;
+`
+
 export const SearchBarContainer = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
@@ -82,5 +86,14 @@ export const NoSearchResultsBtn = styled.button`
   height: 30px;
 `
 
-export const HomeVideoSuccessContainer = styled.div``
+export const HomeVideoSuccessContainer = styled.ul`
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 20px;
+`
+
 // export const SearchBarContainer = styled.div``
