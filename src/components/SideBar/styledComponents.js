@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SideBarTotalContainer = styled.div`
   background-color: ${props => (props.lightTheme ? '#231f20' : '#f8fafc')};
   width: 20%;
-  height: 110vh;
+  min-height: 110vh;
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;

@@ -28,7 +28,7 @@ const HomeBanner = props => {
         </HomeBannerText>
         <HomeBannerTextBtn type="button">GET IT NOW</HomeBannerTextBtn>
       </HomeBannerDetailsContainer>
-      <HomeBannerBtn onClick={onClickClose}>
+      <HomeBannerBtn data-testid="close" onClick={onClickClose}>
         <IoIosClose />
       </HomeBannerBtn>
     </HomeBannerContainer>
