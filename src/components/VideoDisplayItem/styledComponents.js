@@ -1,8 +1,21 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`
 
 export const VideoDisplayItemLiContainer = styled.li`
   width: 32%;
   margin-bottom: 50px;
+  @media screen and (max-width: 760px) {
+    width: 49%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    margin-top: 10px;
+  }
 `
 
 export const VideoDisplayItemImg = styled.img`

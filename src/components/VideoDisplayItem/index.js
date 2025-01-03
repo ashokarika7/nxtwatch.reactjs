@@ -13,6 +13,7 @@ import {
   VideoDisplayItemViews,
   VideoDisplayItemViewsDot,
   VideoDisplayItemTime,
+  StyledLink,
 } from './styledComponents'
 
 const VideoDisplayItem = props => (
@@ -21,6 +22,7 @@ const VideoDisplayItem = props => (
       const {lightTheme} = value
       const {videoDetails} = props
       const {
+        id,
         publishedAt,
         thumbnailUrl,
         title,
@@ -34,32 +36,34 @@ const VideoDisplayItem = props => (
 
       return (
         <VideoDisplayItemLiContainer>
-          <VideoDisplayItemImg alt=" video thumbnail" src={thumbnailUrl} />
-          <VideoDisplayItemProfileImgDetailsContainer>
-            <VideoDisplayItemProfileImg
-              alt="channel logo"
-              src={profileImageUrl}
-            />
-            <VideoDisplayItemDetailsContainer>
-              <VideoDisplayItemTitle lightTheme={lightTheme}>
-                {title}
-              </VideoDisplayItemTitle>
-              <VideoDisplayItemChannelName lightTheme={lightTheme}>
-                {name}
-              </VideoDisplayItemChannelName>
-              <VideoDisplayItemViewsTimeContainer>
-                <VideoDisplayItemViews lightTheme={lightTheme}>
-                  {viewCount} views
-                </VideoDisplayItemViews>
-                <VideoDisplayItemViewsDot lightTheme={lightTheme}>
-                  .
-                </VideoDisplayItemViewsDot>
-                <VideoDisplayItemTime lightTheme={lightTheme}>
-                  {publishingTime}
-                </VideoDisplayItemTime>
-              </VideoDisplayItemViewsTimeContainer>
-            </VideoDisplayItemDetailsContainer>
-          </VideoDisplayItemProfileImgDetailsContainer>
+          <StyledLink to={`/videos/${id}`}>
+            <VideoDisplayItemImg alt=" video thumbnail" src={thumbnailUrl} />
+            <VideoDisplayItemProfileImgDetailsContainer>
+              <VideoDisplayItemProfileImg
+                alt="channel logo"
+                src={profileImageUrl}
+              />
+              <VideoDisplayItemDetailsContainer>
+                <VideoDisplayItemTitle lightTheme={lightTheme}>
+                  {title}
+                </VideoDisplayItemTitle>
+                <VideoDisplayItemChannelName lightTheme={lightTheme}>
+                  {name}
+                </VideoDisplayItemChannelName>
+                <VideoDisplayItemViewsTimeContainer>
+                  <VideoDisplayItemViews lightTheme={lightTheme}>
+                    {viewCount} views
+                  </VideoDisplayItemViews>
+                  <VideoDisplayItemViewsDot lightTheme={lightTheme}>
+                    .
+                  </VideoDisplayItemViewsDot>
+                  <VideoDisplayItemTime lightTheme={lightTheme}>
+                    {publishingTime}
+                  </VideoDisplayItemTime>
+                </VideoDisplayItemViewsTimeContainer>
+              </VideoDisplayItemDetailsContainer>
+            </VideoDisplayItemProfileImgDetailsContainer>
+          </StyledLink>
         </VideoDisplayItemLiContainer>
       )
     }}
