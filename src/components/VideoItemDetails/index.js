@@ -1,13 +1,23 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {formatDistanceToNowStrict} from 'date-fns'
 
 import LightThemeContext from '../../context/LightThemeContext'
 import LoaderComponent from '../LoaderComponent'
 import Failure from '../Failure'
+import SideBar from '../SideBar'
+import Header from '../Header'
 
 import {
   VideoItemDetailsContainer,
+  VideoItemDetailsSuccessContainer,
+  VideoItemDetailsCardContainer,
   VideoItemDetailsImg,
+  VideoItemDetailsTitle,
+  ViewsLikesSaveContainer,
+  ViewsTimeContainer,
+  ViewsPara,
+  DotPara,
 } from './styledComponents'
 
 const apiStatus = {
@@ -58,11 +68,41 @@ class VideoItemDetails extends Component {
         videoUrl: data.video_details.video_url,
         viewCount: data.video_details.view_count,
       }
-      console.log(data.video_details)
+
+      this.setState({
+        videoDetails: updatedDetails,
+        apiCallStatus: apiStatus.success,
+      })
     }
   }
 
-  renderSuccess = lightTheme => {}
+  renderSuccess = lightTheme => {
+    const {videoDetails} = this.state
+    console.log(videoDetails)
+    const {thumbnailUrl, title, viewCount, publishedAt} = videoDetails
+    const publishedTime = formatDistanceToNowStrict(new Date(publishedAt), {
+      addSuffix: true,
+    })
+    return (
+      <>
+        <Header />
+        <VideoItemDetailsSuccessContainer>
+          <SideBar />
+          <VideoItemDetailsCardContainer>
+            <VideoItemDetailsImg src={thumbnailUrl} />
+            <VideoItemDetailsTitle>{title}</VideoItemDetailsTitle>
+            <ViewsLikesSaveContainer>
+              <ViewsTimeContainer>
+                <ViewsPara>{viewCount} views</ViewsPara>
+                <DotPara>.</DotPara>
+                <ViewsPara>{publishedTime}</ViewsPara>
+              </ViewsTimeContainer>
+            </ViewsLikesSaveContainer>
+          </VideoItemDetailsCardContainer>
+        </VideoItemDetailsSuccessContainer>
+      </>
+    )
+  }
 
   renderLoader = () => <LoaderComponent />
 

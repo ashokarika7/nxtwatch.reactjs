@@ -1,4 +1,4 @@
-import {formatDistanceToNow} from 'date-fns'
+import {formatDistanceToNowStrict} from 'date-fns'
 import LightThemeContext from '../../context/LightThemeContext'
 
 import {
@@ -30,7 +30,7 @@ const VideoDisplayItem = props => (
         channel,
       } = videoDetails
       const {name, profileImageUrl} = channel
-      const publishingTime = formatDistanceToNow(new Date(publishedAt), {
+      const publishingTime = formatDistanceToNowStrict(new Date(publishedAt), {
         addSuffix: true,
       })
 
